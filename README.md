@@ -1,18 +1,21 @@
 # Hangman-Game Rules
 
-Essentially, the app randomly picks a letter, and the user has to guess which letter the app chose.
-Put the following text on your page:
+Choose a theme for your game! In the demo, we picked an 80s theme: 80s questions, 80s sound and an 80s aesthetic. You can choose any subject for your theme, though, so be creative!
 
-1. Guess what letter I'm thinking of
+Use key events to listen for the letters that your players will type.
 
-2. Wins: (# of times the user has guessed the letter correctly)
+Display the following on the page:
 
-3. Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+Press any key to get started!
 
-4. Guesses Left: (# of guesses left. This will update)
+Wins: (# of times user guessed the word correctly).
 
-5. Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
+If the word is madonna, display it like this when the game starts: _ _ _ _ _ _ _.
 
-6. When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
+As the user guesses the correct letters, reveal them: m a d o _ _ a.
 
-7. When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
+Number of Guesses Remaining: (# of guesses remaining for the user).
+
+Letters Already Guessed: (Letters the user has guessed, displayed like L Z Y H).
+
+After the user wins/loses the game should automatically choose another word and make the user play it.
