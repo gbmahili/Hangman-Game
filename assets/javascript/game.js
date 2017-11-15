@@ -1,14 +1,17 @@
 var words = ["Baraka", "Mahili"];
 
-var remainingGuessCount = 6;
-
-var remainingGuessCountDiv = document.getElementsByClassName("remaining-guess-count");
-
+//Get the current number of remaining guesses and convert to number
+var remainingGuessCount = Number(document.getElementById("guess-count").innerText);
+//Get the eleent with the current word
 document.getElementById("current-word").innerHTML = words[1];
 
+//On key up:
 document.onkeyup = function (event) {
-    remainingGuessCount = remainingGuessCount - 1;
-    console.log(remainingGuessCountDiv);
+    //1. substract 1 from the remainingGuessCount
+    remainingGuessCount--;
+    console.log(remainingGuessCount);
+    //2. Update the remaining guess count
+    document.getElementById("guess-count").innerText = remainingGuessCount;
 }
 
 //User presses a key, check if that key is in the first word of the array
