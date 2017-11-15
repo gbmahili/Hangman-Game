@@ -1,5 +1,7 @@
 # Hangman-Game Rules
 
+### Overview
+
 1. Display the following on the page:
 
 2. Press any key to get started!
