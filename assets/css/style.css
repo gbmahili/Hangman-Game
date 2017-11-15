@@ -23,7 +23,7 @@ h1{
     background: #FFF;
 }
 
-#current-word, .letters-guesses{
+#current-word, .letters-guessed{
     font-size: 2em;
     color: #009688;
     letter-spacing: 20px;
