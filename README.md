@@ -1,21 +1,17 @@
 # Hangman-Game Rules
 
-Choose a theme for your game! In the demo, we picked an 80s theme: 80s questions, 80s sound and an 80s aesthetic. You can choose any subject for your theme, though, so be creative!
+1. Display the following on the page:
 
-Use key events to listen for the letters that your players will type.
+2. Press any key to get started!
 
-Display the following on the page:
+3. Wins: (# of times user guessed the word correctly).
 
-Press any key to get started!
+4. If the word is madonna, display it like this when the game starts: _ _ _ _ _ _ _.
 
-Wins: (# of times user guessed the word correctly).
+5. As the user guesses the correct letters, reveal them: m a d o _ _ a.
 
-If the word is madonna, display it like this when the game starts: _ _ _ _ _ _ _.
+6. Number of Guesses Remaining: (# of guesses remaining for the user).
 
-As the user guesses the correct letters, reveal them: m a d o _ _ a.
+7. Letters Already Guessed: (Letters the user has guessed, displayed like L Z Y H).
 
-Number of Guesses Remaining: (# of guesses remaining for the user).
-
-Letters Already Guessed: (Letters the user has guessed, displayed like L Z Y H).
-
-After the user wins/loses the game should automatically choose another word and make the user play it.
+8. After the user wins/loses the game should automatically choose another word and make the user play it.
