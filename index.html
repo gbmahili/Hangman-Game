@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +12,11 @@
 
     <!-- CSS File -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    
-    
-    
+
+
+
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -24,20 +26,31 @@
             <div class="col-md-7 game-items">
 
                 <h1>Press Any Key To Get Started</h1>
-                
-                <div class="row win-div">
-                    <div class="col-md-12 col-sm-12">
-                        Wins:
+
+                <div class="row win-loss-div">
+                    <div class="col-md-12 win-div">
+                        <div class="col-md-12 col-sm-12">
+                            Wins:
+                        </div>
+                        <div class="col-md-12 col-sm-12 win-count">
+                            <span id="win-count">0</span>
+
+                        </div>
                     </div>
-                    <div class="col-md-12 col-sm-12 win-count">
-                        <span id="win-count">0</span>
-                        
+                    <div class="col-md-12 loss-div">
+                        <div class="col-md-12 col-sm-12">
+                            Losses:
+                        </div>
+                        <div class="col-md-12 col-sm-12 win-count">
+                            <span id="loss-count">0</span>
+                    
+                        </div>
                     </div>
                 </div>
 
                 <div class="row current-word-div">
                     <div class="col-md-12 col-sm-12">
-                         Current Word:
+                        Current Word:
                     </div>
                     <div class="col-md-12 col-sm-12">
                         <span id="current-word">------</span>
@@ -49,7 +62,7 @@
                         Number of Guesses Remaining:
                     </div>
                     <div class="col-md-12 col-sm-12 remaining-guess-count">
-                        <span  id="guess-count">6</span>
+                        <span id="guess-count">6</span>
                     </div>
                 </div>
 
@@ -67,4 +80,5 @@
 
     <script src="./assets/javascript/game.js"></script>
 </body>
+
 </html>

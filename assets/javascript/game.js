@@ -5,9 +5,11 @@ var remainingGuessCount = Number(document.getElementById("guess-count").innerTex
 
 //Get the current number of winCount
 var winCount = Number(document.getElementById("win-count").innerText);
+//Get the current number of loss-coun
+var lossCount = Number(document.getElementById("loss-count").innerText);
 
 //Track the losses
-var lossCount = 0;
+//var lossCount = 0;
 
 var gameRound = winCount + lossCount;
 
@@ -26,7 +28,7 @@ var countLettersGuessed = 0;
 document.onkeyup = function (event) {
 
     //1. Check if the remainingGuessCount is greater or equal to 1, then substract if true
-    if (remainingGuessCount >= 1 && words.length > 0 && words.length > gameRound) {
+    if (remainingGuessCount >= 1 && words.length > gameRound) {
 
         //If true: Update the userLetter 
         userLetter = event.key;
@@ -89,9 +91,6 @@ document.onkeyup = function (event) {
         gameRound++;
         //Reset the gameCall the resetHangManGame();
         resetHangManGame();
-        //Play a win song and log to the console
-        console.log("You are the winner");
-
     }
 
     if (remainingGuessCount === 0) {
@@ -112,6 +111,7 @@ document.onkeyup = function (event) {
         remainingGuessCount = 6;
         //Updte the winCount, currentWord and lettersGuessed labels
         document.getElementById("win-count").innerText = winCount;
+        document.getElementById("loss-count").innerText = lossCount;
         document.getElementById("current-word").innerText = currentWord;
         document.getElementById("letters-guessed").innerText = lettersGuessed;
         document.getElementById("guess-count").innerText = remainingGuessCount;

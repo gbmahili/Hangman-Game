@@ -18,7 +18,7 @@ h1{
     padding: 15px;
     margin: 5px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    min-height: 680px;
+    min-height: 750px;
     text-align: center;
     background: #FFF;
 }
@@ -29,7 +29,7 @@ h1{
     letter-spacing: 20px;
 }
 
-.win-div, .remaining-guess-div, .letters-guessed-div, .current-word-div{
+.win-loss-div, .remaining-guess-div, .letters-guessed-div, .current-word-div{
     border: 1px solid rgba(68, 67, 67, 0.23);;
     padding: 10px;
     margin: 30px 15px;
@@ -48,6 +48,11 @@ h1{
     background: #009688;
     color: whitesmoke;
 }
+.loss-div{
+    background: #1E88E5;
+    color: white;
+    text-align: right;
+}
 
 .win-count{
     color: white;
@@ -65,4 +70,20 @@ h1{
 .letters-guessed-div{
     background: #81D4FA;
     color: #E1F5FE;
+}
+
+/* No greater than 991px, no less than 768px */
+@media (max-width:991px) and (min-width:768px) {
+    .win-loss-div{
+        background: #1E88E5;
+    }
+    .win-div{
+        background: #009688;
+        color: whitesmoke;
+    }
+    .loss-div{
+        background: #1E88E5;
+        color: #9E9E9E;
+        text-align: right;
+    }
 }
