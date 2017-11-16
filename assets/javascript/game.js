@@ -117,6 +117,12 @@ document.onkeyup = function (event) {
         document.getElementById("guess-count").innerText = remainingGuessCount;
     }
 
+
+
     //Reset the letterIndexes array so that it doesn't keep adding to the array when we press a letter.
     letterIndexes = [];
+
+    // #TO DO
+    //If the word is madonna, display it like this when the game starts: _ _ _ _ _ _ _. 
+    //(this should not be hard coded, find a way to loop through each name by gameRound, then display the dashes)
 }
