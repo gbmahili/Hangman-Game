@@ -1,4 +1,4 @@
-var words = ["baraka", "mahili"];
+var words = ["baraka", "mahili", "clovis"];
 
 //Get the current number of remaining guesses and convert to number
 var remainingGuessCount = Number(document.getElementById("guess-count").innerText);
