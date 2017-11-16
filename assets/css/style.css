@@ -71,19 +71,3 @@ h1{
     background: #81D4FA;
     color: #E1F5FE;
 }
-
-/* No greater than 991px, no less than 768px */
-@media (max-width:991px) and (min-width:768px) {
-    .win-loss-div{
-        background: #1E88E5;
-    }
-    .win-div{
-        background: #009688;
-        color: whitesmoke;
-    }
-    .loss-div{
-        background: #1E88E5;
-        color: #9E9E9E;
-        text-align: right;
-    }
-}
