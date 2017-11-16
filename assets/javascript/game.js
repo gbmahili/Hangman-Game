@@ -20,17 +20,23 @@ var countLettersGuessed = 0;
 
 //On key up:
 document.onkeyup = function (event) {
-    //1. substract 1 from the remainingGuessCount
-    if (remainingGuessCount >= 1) {       
-    
-        remainingGuessCount--;
-        //2. Update the remaining guess count
-        document.getElementById("guess-count").innerText = remainingGuessCount;
+    //1. Check if the remainingGuessCount is greater or equal to 1, then substract if true
+    if (remainingGuessCount >= 1) {
 
-        //3. Update the userLetter 
+        //If true: Update the userLetter 
         userLetter = event.key;
+
+        //Then check if the whatever letter the user typed in already exist in the lettersGuessed:
+        if ((lettersGuessed.indexOf(userLetter) === -1)) {
+            //If not, Reduce the remaining count
+            remainingGuessCount--;
+        }
+
+        //Update the remaining guess count
+        document.getElementById("guess-count").innerText = remainingGuessCount;
     }
-    // Loop through the first name in the words array only if WINS == 0
+
+    //2. Loop through the first name in the words array only if WINS == 0
     for (var i = 0; i < words[0].length; i++) {
         //Check if the word has a letter that the user pressed
         if (words[0][i] === userLetter) {
@@ -49,19 +55,21 @@ document.onkeyup = function (event) {
     };
 
     //We take the letters guesses, replaced the character at countLetterGuesses (starting from index 0) with what the user typed in
-    if (countLettersGuessed >= 0) { 
-        lettersGuessed = lettersGuessed.setCharAt(countLettersGuessed, userLetter);
-        countLettersGuessed++;
-        document.getElementById("letters-guessed").innerText = lettersGuessed;
+    if (countLettersGuessed >= 0) {
+        //Check if the letter already exist in the string: Only decrease the count of letters guess and update the letter guessed if it is not yet there.
+        if (lettersGuessed.indexOf(userLetter) === -1) {
+            //Change the character of the letters guessed at the 
+            lettersGuessed = lettersGuessed.setCharAt(countLettersGuessed, userLetter);
+            countLettersGuessed++;
+            document.getElementById("letters-guessed").innerText = lettersGuessed;
+        }
     }
 
-    //We then loop through all the indexes and add those letters in the current word at each position from the indexes array
-    console.log(letterIndexes);
+    //We then loop through all the indexes and add those letters in the current word at each position from the indexes array    
     for (var i = 0; i < letterIndexes.length; i++) {
-        console.log(letterIndexes[i]);
         currentWord = currentWord.setCharAt(letterIndexes[i], userLetter);
         document.getElementById("current-word").innerText = currentWord;
-        
+
     }
     //Reset the letterIndexes array so that it doesn't keep adding to the array when we press a letter.
     letterIndexes = [];
