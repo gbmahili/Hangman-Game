@@ -7,7 +7,6 @@ var remainingGuessCount = Number(document.getElementById("guess-count").innerTex
 var winCount = Number(document.getElementById("win-count").innerText);
 
 //Get the letters already guessed
-
 var lettersGuessed = document.getElementById("letters-guessed").innerText;
 
 //Get the current word
@@ -20,6 +19,7 @@ var countLettersGuessed = 0;
 
 //On key up:
 document.onkeyup = function (event) {
+    
     //1. Check if the remainingGuessCount is greater or equal to 1, then substract if true
     if (remainingGuessCount >= 1) {
 
@@ -37,11 +37,12 @@ document.onkeyup = function (event) {
     }
 
     //2. Loop through the first name in the words array only if WINS == 0
-    for (var i = 0; i < words[0].length; i++) {
+    for (var i = 0; i < words[winCount].length; i++) {
         //Check if the word has a letter that the user pressed
-        if (words[0][i] === userLetter) {
+        if (words[winCount][i] === userLetter) {
             //If it does, push the index of that letter
             letterIndexes.push(i);
+            
         }
     }
 
@@ -71,6 +72,27 @@ document.onkeyup = function (event) {
         document.getElementById("current-word").innerText = currentWord;
 
     }
+
+
+    //Update Win
+    if (words[winCount] == currentWord) {
+        console.log("You are the winner");
+        //Reset the current word
+        currentWord = "------";
+        //Reset the letters guessed
+        lettersGuessed = "------";
+        
+        //Increment the winCount
+        winCount++;
+        countLettersGuessed = 0;
+        remainingGuessCount = 6;
+        //Updte the winCount, currentWord and lettersGuessed labels
+        document.getElementById("win-count").innerText = winCount;        
+        document.getElementById("current-word").innerText = currentWord;
+        document.getElementById("letters-guessed").innerText = lettersGuessed;
+        document.getElementById("guess-count").innerText = remainingGuessCount;
+    };
+
     //Reset the letterIndexes array so that it doesn't keep adding to the array when we press a letter.
     letterIndexes = [];
 }
