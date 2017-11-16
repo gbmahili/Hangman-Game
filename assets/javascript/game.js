@@ -13,11 +13,31 @@ var lossCount = Number(document.getElementById("loss-count").innerText);
 
 var gameRound = winCount + lossCount;
 
+
+
+
+// Update fields with dashes: Current Word and Words Already Guessed
+var dashed = "_";
+for (var i = 0; i < words[gameRound].length - 1; i++) {
+    dashed = dashed + "_";
+}
+
+console.log(dashed);
+
+//End of test
+
+
+
+
+
 //Get the letters already guessed
 var lettersGuessed = document.getElementById("letters-guessed").innerText;
 
 //Get the current word
 var currentWord = document.getElementById("current-word").innerText;
+
+//document.getElementById("letters-guessed").innerText = dashed;
+
 
 var letterIndexes = [];
 //Store the userLetter
@@ -102,9 +122,9 @@ document.onkeyup = function (event) {
 
     function resetHangManGame() {
         //Reset the current word
-        currentWord = "------";
+        currentWord = "______";
         //Reset the letters guessed
-        lettersGuessed = "------";
+        lettersGuessed = "______";
 
         //Reset the counters
         countLettersGuessed = 0;
