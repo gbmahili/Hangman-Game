@@ -1,9 +1,12 @@
-var words = ["katwa", "mahili", "clovis"];
+/**
+ * Users will guess the word in a descending order from the array words.
+ * They will be assigned the number of guesses based on the number of characters in the word being guessed
+ * Everytime they fail to guess a letter, remaining guesses will drop
+ * Each word has different number of guess based on its length
+ * If the guess the correct word, they will get a +1 on they win, otherwise, they will get a +1 on the losses
+ */
 
-//Get the current number of remaining guesses and convert to number
-//var remainingGuessCount = Number(document.getElementById("guess-count").innerText);
-
-
+var words = ["baraka","seattle", "dallas", "windsor", "lexington"];
 
 //Get the current number of winCount
 var winCount = Number(document.getElementById("win-count").innerText);
@@ -26,10 +29,7 @@ document.getElementById("guess-count").innerText = remainingGuessCount;
 //#First we instantiate the dashed variable
 var dashed = "";
 //#We then loop through the wordToGuess then add an underscore to the dashed variable
-for (var i = 0; i < wordToGuessLength; i++) {
-    dashed +=  "_";//This can always be written like: dashed = dashed + "_";
-};
-console.log(wordToGuessLength);
+createDashes();//This function generates dashes, it has been created at the bottom of this script
 
 //Make the current-word and letters-guessed equals to the dashed, depending on how many characters are in the current word being guessed from the array
 document.getElementById("current-word").innerText = dashed;
@@ -40,8 +40,6 @@ var lettersGuessed = document.getElementById("letters-guessed").innerText;
 
 //Get the current word
 var currentWord = document.getElementById("current-word").innerText;
-
-//document.getElementById("letters-guessed").innerText = dashed;
 
 
 var letterIndexes = [];
@@ -114,6 +112,7 @@ document.onkeyup = function (event) {
         //Increment the winCount
         winCount++;
         gameRound++;
+        wordToGuessLength = words[gameRound].length;
         //Reset the gameCall the resetHangManGame();
         resetHangManGame();
     }
@@ -121,36 +120,38 @@ document.onkeyup = function (event) {
     if (remainingGuessCount === 0) {
         lossCount++;
         gameRound++;
+        wordToGuessLength = words[gameRound].length;
         resetHangManGame();
-        console.log("You just lost dude..bwahahaha...Number of loss:" + lossCount);
     };
 
     function resetHangManGame() {
-        //Reset the current word
-        currentWord = "______";
-        //Reset the letters guessed
-        lettersGuessed = "______";
+        //Reset the dashed value
+        dashed = "";
+        //Create new dashes based on the new word being guessed
+        createDashes();//Generates dashes
 
+        //Reset the current word
+        currentWord = dashed;
+        //Reset the letters guessed
+        lettersGuessed = dashed;
         //Reset the counters
         countLettersGuessed = 0;
-        remainingGuessCount = 6;
+        remainingGuessCount = wordToGuessLength;
         //Updte the winCount, currentWord and lettersGuessed labels
         document.getElementById("win-count").innerText = winCount;
         document.getElementById("loss-count").innerText = lossCount;
         document.getElementById("current-word").innerText = currentWord;
         document.getElementById("letters-guessed").innerText = lettersGuessed;
-        document.getElementById("guess-count").innerText = remainingGuessCount;
+        document.getElementById("guess-count").innerText = wordToGuessLength;
     }
-
-
-
     //Reset the letterIndexes array so that it doesn't keep adding to the array when we press a letter.
     letterIndexes = [];
 
-    // #TO DO
-    //If the word is madonna, display it like this when the game starts: _ _ _ _ _ _ _. 
-    //(this should not be hard coded, find a way to loop through each name by gameRound, then display the dashes)
+};//End of onkeyup
 
-
-
-}//End of onkeyup
+//Create Dashes
+function createDashes() {
+    for (var i = 0; i < wordToGuessLength; i++) {
+        dashed += "_"; //This can always be written like: dashed = dashed + "_";
+    };
+};
