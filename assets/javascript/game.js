@@ -6,7 +6,7 @@
  * If the guess the correct word, they will get a +1 on they win, otherwise, they will get a +1 on the losses
  */
 
-var words = ["baraka","seattle", "dallas", "windsor", "lexington"];
+var words = ["seattle", "dallas", "windsor", "lexington"];
 
 //Get the current number of winCount
 var winCount = Number(document.getElementById("win-count").innerText);
@@ -112,7 +112,12 @@ document.onkeyup = function (event) {
         //Increment the winCount
         winCount++;
         gameRound++;
-        wordToGuessLength = words[gameRound].length;
+        //Check if the current word to guess is the last one in the array words
+        if(words[gameRound-1] !== words[words.length -1]){
+            //If so, don't try to generate another length
+            wordToGuessLength = words[gameRound].length;
+        }
+        
         //Reset the gameCall the resetHangManGame();
         resetHangManGame();
     }
@@ -120,7 +125,11 @@ document.onkeyup = function (event) {
     if (remainingGuessCount === 0) {
         lossCount++;
         gameRound++;
-        wordToGuessLength = words[gameRound].length;
+        //Check if the current word to guess is the last one in the array words
+        if (words[gameRound - 1] !== words[words.length - 1]) {
+            //If so, don't try to generate another length
+            wordToGuessLength = words[gameRound].length;
+        }
         resetHangManGame();
     };
 
