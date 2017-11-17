@@ -8,9 +8,7 @@ var winCount = Number(document.getElementById("win-count").innerText);
 //Get the current number of loss-coun
 var lossCount = Number(document.getElementById("loss-count").innerText);
 
-//Track the losses
-//var lossCount = 0;
-
+// Create the round of the game being played, it starts with 0, when there is a win or loss, it should be 1 and so on
 var gameRound = winCount + lossCount;
 
 // Update fields with dashes: Current Word and Words Already Guessed
@@ -22,15 +20,6 @@ for (var i = 0; i < words[gameRound].length; i++) {
 //Make the current-word and letters-guessed equals to the dashed, depending on how many characters are in the current word being guessed from the array
 document.getElementById("current-word").innerText = dashed;
 document.getElementById("letters-guessed").innerText = dashed;
-
-
-console.log(dashed + gameRound);
-
-//End of test
-
-
-
-
 
 //Get the letters already guessed
 var lettersGuessed = document.getElementById("letters-guessed").innerText;
