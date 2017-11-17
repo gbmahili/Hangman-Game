@@ -1,7 +1,9 @@
-var words = ["baraka", "mahili", "clovis"];
+var words = ["katwa", "mahili", "clovis"];
 
 //Get the current number of remaining guesses and convert to number
-var remainingGuessCount = Number(document.getElementById("guess-count").innerText);
+//var remainingGuessCount = Number(document.getElementById("guess-count").innerText);
+
+
 
 //Get the current number of winCount
 var winCount = Number(document.getElementById("win-count").innerText);
@@ -12,10 +14,22 @@ var lossCount = Number(document.getElementById("loss-count").innerText);
 var gameRound = winCount + lossCount;
 
 // Update fields with dashes: Current Word and Words Already Guessed
+
+//We get the length of the word to guess using the gameRound number
+var wordToGuessLength = words[gameRound].length;
+//We then set the remainingGuessCount to the samevalue based on the word to guess...if we have pity, we can add 4 or 5 to allow users to guess more
+var remainingGuessCount = wordToGuessLength;//add + 5 guess to each one if you decide to be good to the player
+//We then update the guess-count field with the number of guesses remaing
+document.getElementById("guess-count").innerText = remainingGuessCount;
+
+//Create Dashes equal to the lenght of guess to guess. If the word has four letters, then create 4 dashes
+//#First we instantiate the dashed variable
 var dashed = "";
-for (var i = 0; i < words[gameRound].length; i++) {
-    dashed = dashed + "_";
+//#We then loop through the wordToGuess then add an underscore to the dashed variable
+for (var i = 0; i < wordToGuessLength; i++) {
+    dashed +=  "_";//This can always be written like: dashed = dashed + "_";
 };
+console.log(wordToGuessLength);
 
 //Make the current-word and letters-guessed equals to the dashed, depending on how many characters are in the current word being guessed from the array
 document.getElementById("current-word").innerText = dashed;
