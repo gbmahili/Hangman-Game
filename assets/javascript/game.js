@@ -13,16 +13,18 @@ var lossCount = Number(document.getElementById("loss-count").innerText);
 
 var gameRound = winCount + lossCount;
 
-
-
-
 // Update fields with dashes: Current Word and Words Already Guessed
-var dashed = "_";
-for (var i = 0; i < words[gameRound].length - 1; i++) {
+var dashed = "";
+for (var i = 0; i < words[gameRound].length; i++) {
     dashed = dashed + "_";
-}
+};
 
-console.log(dashed);
+//Make the current-word and letters-guessed equals to the dashed, depending on how many characters are in the current word being guessed from the array
+document.getElementById("current-word").innerText = dashed;
+document.getElementById("letters-guessed").innerText = dashed;
+
+
+console.log(dashed + gameRound);
 
 //End of test
 
@@ -145,4 +147,7 @@ document.onkeyup = function (event) {
     // #TO DO
     //If the word is madonna, display it like this when the game starts: _ _ _ _ _ _ _. 
     //(this should not be hard coded, find a way to loop through each name by gameRound, then display the dashes)
-}
+
+
+
+}//End of onkeyup
