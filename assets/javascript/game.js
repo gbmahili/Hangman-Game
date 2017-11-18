@@ -106,9 +106,13 @@ document.onkeyup = function (event) {
 
     }
 
+    var winMessage = document.getElementById("win-message");
+    var lossMessage = document.getElementById("loss-message");
+    var mainContent = document.getElementById("main-content");
 
     //Update Win
     if (words[gameRound] == currentWord) {
+        
         //Increment the winCount
         winCount++;
         gameRound++;
@@ -120,8 +124,43 @@ document.onkeyup = function (event) {
         
         //Reset the gameCall the resetHangManGame();
         resetHangManGame();
-    }
 
+        setTimeout(function () {
+            //Show win div
+            winMessage.style.display = "block";
+            //Hide mainContent
+            mainContent.style.display = "none";
+
+        }, 500);
+
+        
+
+        //Set Image
+        document.getElementById("city-visited").setAttribute("src", "./assets/images/" + words[gameRound - 1] + ".jpg");
+        document.getElementById("city-name").innerText = words[gameRound - 1];
+
+        var wintimeleft = 5;
+        var wordChoice = setInterval(function () {
+
+            // document.getElementById("progressBar").innerText =  --timeleft;
+            document.getElementById("win-seconds-count").innerText = --wintimeleft;
+            if (wintimeleft <= 0) {
+                clearInterval(wordChoice);
+                document.getElementById("win-seconds-count").innerText = "";
+            }
+        }, 1000);
+
+        setTimeout(function () {
+            //Hide win div again
+            winMessage.style.display = "none";
+            mainContent.style.display = "block";
+            
+        }, 5000);
+    };
+
+    
+
+    //Update loss
     if (remainingGuessCount === 0) {
         lossCount++;
         gameRound++;
@@ -131,6 +170,30 @@ document.onkeyup = function (event) {
             wordToGuessLength = words[gameRound].length;
         }
         resetHangManGame();
+
+        lossMessage.style.display = "block";        
+        mainContent.style.display = "none";
+
+        //unset Image
+        document.getElementById("city-visited").setAttribute("src", "");
+        document.getElementById("city-name").innerText = "";
+        
+        var losstimeleft = 5;
+        var lossWordChoice = setInterval(function () {
+            // document.getElementById("progressBar").innerText =  --timeleft;
+            document.getElementById("loss-seconds-count").innerText = --losstimeleft;
+            if (losstimeleft <= 0) {
+                clearInterval(lossWordChoice);
+                document.getElementById("loss-seconds-count").innerText = "";
+            }
+        }, 1000);
+        
+        //Set Time Out and hide loss message then show maincontent after 10 seconds
+        setTimeout(function () {
+            //Hide win div again
+            lossMessage.style.display = "none";
+            mainContent.style.display = "block";
+        }, 5000);
     };
 
     function resetHangManGame() {

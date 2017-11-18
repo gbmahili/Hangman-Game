@@ -18,10 +18,45 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="row" id="win-message">
+        <div class="col-md-6">
+            <center>
+                <p class="displaying-msg">Great Guess...Alright......Keep Going</p>
+            </center>
+            <center>
+                <img class="img-responsive" src="./assets/images/winning.gif" alt="Glee TV Show Winning Gif">
+            </center>
+        </div>
+        <div class="col-md-6 win-seconds-count-div">
+            <p class="displaying-msg">Selecting new word in...</p>
+            <p id = "win-seconds-count"></p> 
+            <p id = "win-time-unit">seconds</p>
+        </div>        
+    </div>
+
+    <div class="row" id="loss-message">
+        <div class="col-md-6">
+            <center><p class="displaying-msg">You LOST this one, but don't worry...Keep Going</p></center>
+            <center><img class="img-responsive" src="./assets/images/losing.gif" alt="Cop"></center>
+        </div>
+        <div class="col-md-6 loss-seconds-count-div">
+            <p class="displaying-msg">Selecting new word in...</p>
+            <p id="loss-seconds-count"></p>
+            <p id="loss-time-unit">seconds</p>
+        </div>
+    </div>
+    
+    <div class="container" id="main-content">
+
         <div class="row">
             <div class="col-md-4 word-image">
-                Picture related to the word will be placed here when the word is correct
+                <p class="image-notice">The cities I visited between September 20 and October 22, 2017 will display here, only if you guess them right.</p>
+                <hr>
+                <center>
+                    <img class="img-responsive" id="city-visited">
+                </center>
+                <h2 id="city-name"></h2>
+                <hr>
             </div>
             <div class="col-md-7 game-items">
 
