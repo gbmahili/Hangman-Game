@@ -40,8 +40,6 @@ var lettersGuessed = document.getElementById("letters-guessed").innerText;
 
 //Get the current word
 var currentWord = document.getElementById("current-word").innerText;
-
-
 var letterIndexes = [];
 //Store the userLetter
 var userLetter;
@@ -49,12 +47,25 @@ var countLettersGuessed = 0;
 
 //On key up:
 document.onkeyup = function (event) {
+    //If user has guessed all the 4 words:
+    if (gameRound == 4) {
+        
+        //Ask if they want to play again.
+        var playAgain = confirm("You have reached the end of the game. Would you like to play again?");
+        // If they click Ok:
+        if (playAgain) {
+            //Refresh the page, if not, they will stay on the same page.
+            location.reload();
+        }        
+    }
 
     //1. Check if the remainingGuessCount is greater or equal to 1, then substract if true
     if (remainingGuessCount >= 1 && words.length > gameRound) {
 
         //If true: Update the userLetter 
         userLetter = event.key;
+        //Change to lowercase in case the user has caps locked
+        userLetter = userLetter.toLocaleLowerCase();
 
         //Then check if the whatever letter the user typed in already exist in the lettersGuessed:
         if ((lettersGuessed.indexOf(userLetter) === -1)) {
@@ -112,6 +123,9 @@ document.onkeyup = function (event) {
 
     //Update Win
     if (words[gameRound] == currentWord) {
+        //Play winning sound
+        var audio = new Audio('./assets/audio/winning.mp3');
+        audio.play();
         
         //Increment the winCount
         winCount++;
@@ -132,8 +146,6 @@ document.onkeyup = function (event) {
             mainContent.style.display = "none";
 
         }, 500);
-
-        
 
         //Set Image
         document.getElementById("city-visited").setAttribute("src", "./assets/images/" + words[gameRound - 1] + ".jpg");
@@ -162,6 +174,11 @@ document.onkeyup = function (event) {
 
     //Update loss
     if (remainingGuessCount === 0) {
+
+        //Play sad sound
+        var audio = new Audio('./assets/audio/sad.mp3');
+        audio.play();
+
         lossCount++;
         gameRound++;
         //Check if the current word to guess is the last one in the array words
